@@ -107,9 +107,6 @@ const Subtitle = styled.p`
   }
 `;
 
-/* ============================= */
-/* Grid */
-/* ============================= */
 
 const Grid = styled.div`
   display: grid;

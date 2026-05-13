@@ -18,9 +18,9 @@ const App = () => {
           index: true, 
           loader: async () => {
             if(user) {
+              console.log(user)
               const response = await customFetch().get("/api/v1/links");
               const { links } = response.data;
-              console.log(links)
               return links;
             } else {
               return redirect("/auth")

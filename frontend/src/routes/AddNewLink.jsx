@@ -9,12 +9,9 @@ import { useLoaderData } from 'react-router-dom';
 const AddNewLink = () => {
   const {addLink, getLinks} = useLinksContext();
   const loaderData = useLoaderData();
-  // if(isLoading) {
-  //   return <h2>Loading</h2>
-  // }
-  // if(error) {
-  //   console.log(error);
-  // }
+  useEffect(() => {
+    getLinks();
+  }, [])
 
   return (
     <Wrapper>

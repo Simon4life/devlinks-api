@@ -5,12 +5,16 @@ import PreviewCard from '../components/PreviewCard';
 import {useParams} from "react-router-dom";
 import customFetch from '../utils/customFetch';
 import { useUserContext } from '../context/user_context';
+import { useLinksContext } from '../context/links_context';
 
 const Preview = () => {
   const {userId} =  useParams();
   const {user} =useUserContext();
+  const {getLinks} = useLinksContext();
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState()
+
+
   const fetchUserData = async() => {
     try {
       const response = await customFetch().get(`/api/v1/profile/${userId}`);
@@ -25,6 +29,7 @@ const Preview = () => {
   }
   useEffect(() =>{
     fetchUserData();
+    getLinks()
   }, [])
 
   if(isLoading) {

@@ -97,7 +97,6 @@ const loginUser = async (req, res) => {
   }
 
   const verifyPassword = await user.confirmPassword(password);
-  console.log(verifyPassword)
   if (!verifyPassword) {
     return res.status(StatusCodes.BAD_REQUEST).json({message: "INVALID CREDENTIALS!"});
   }
