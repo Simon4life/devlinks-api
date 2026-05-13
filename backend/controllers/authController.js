@@ -7,6 +7,7 @@ const Token = require("../models/TokenScema");
 const crypto = require('crypto')
 const CustomError = require("../errors/customError");
 const { createJWT } = require("../utils/jwt");
+const { STATUS_CODES } = require("http");
 // const sendVerificationEmail = require("../utils/sendVerificationEmail");
 
 
@@ -96,8 +97,9 @@ const loginUser = async (req, res) => {
   }
 
   const verifyPassword = await user.confirmPassword(password);
+  console.log(verifyPassword)
   if (!verifyPassword) {
-    return res.status(StatusCodes.FORBIDDEN("Invalid credentials"));
+    return res.status(StatusCodes.BAD_REQUEST).json({message: "INVALID CREDENTIALS!"});
   }
 
   const tokenUser = {
