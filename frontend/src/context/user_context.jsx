@@ -1,7 +1,6 @@
 import React, { useContext, useReducer, useEffect } from "react";
 import customFetch from "../utils/customFetch"
 import reducer from "../reducers/user_reducer";
-import { redirect } from "react-router-dom";
 import axios from "axios";
 const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || null,

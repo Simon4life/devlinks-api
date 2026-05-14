@@ -1,19 +1,25 @@
 import React from 'react'
 import styled from "styled-components";
-import { useState } from 'react';
-import { Form, useActionData, useSearchParams } from "react-router-dom";
-
+import { useState, useEffect } from 'react';
+import { Form, useActionData, useSearchParams, redirect } from "react-router-dom";
+import { useUserContext } from '../context/user_context';
+import { useNavigate } from 'react-router-dom';
 const Auth = () => {
-  // const [formValues, setFormValues] = useState({ firstName: "", lastName: "", email: "", password: "", isMember: false })
   const [searchParams] = useSearchParams();
+  const {user} = useUserContext();
   const [isLogin, setIsLogin] = useState(searchParams.get('mode') === 'login')
-
   const actionData = useActionData();
-
-
+  const navigate = useNavigate();
+  useEffect(()=>{
+    if(user) {
+      navigate("/")
+    } else {
+      return;
+    }
+  }, [user])
   return (
     <Wrapper>
-      <Form method="POST" className="form" >
+      <Form method="POST" className="form">
         <h2>{isLogin ? "Login" : "Register"}</h2>
         <input type="hidden" name="mode" value={isLogin ? 'login' : 'register'} />
         {/* Name form input */}
