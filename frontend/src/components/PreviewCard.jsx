@@ -27,8 +27,14 @@ const Wrapper = styled.article`
   flex-direction: column;
   box-shadow: var(--light-shadow);
   border-radius: 8px;
+  h4 {
+    font-size: 1.5rem;
+    margin-bottom: .2rem;
+  
+  }
   p {
     margin-bottom: 0;
+
   }
   img {
     display: block;

@@ -20,7 +20,7 @@ const authorizeUser = async (req, res, next) => {
       if(!refreshToken) return res.status(StatusCodes.NOT_FOUND).json({msg: "refresh token not found"});
       jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, async (err, decodedRefresh) => {
         if(err) {
-          return res.status(StatusCodes.BAD_REQUEST).json({msg: ""});
+          return res.status(StatusCodes.BAD_REQUEST).json({msg: "expired token"});
         }
         const userId = req.userId;
         const {firstName, email, lastName, _id} = await User.findOne({userId});

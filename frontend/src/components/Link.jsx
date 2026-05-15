@@ -12,7 +12,7 @@ const Links = () => {
       {
         formLinksArr.map((item, index) => {
           return (
-            <Link to={item.link} key={index}>
+            <Link target='_blank' to={item.link} key={index}>
               {platformIcons[item.platform]}
               {item.platform} <FaArrowRight className="arrow-right" />
             </Link>

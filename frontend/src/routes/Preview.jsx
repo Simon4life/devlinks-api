@@ -6,6 +6,7 @@ import {useParams} from "react-router-dom";
 import customFetch from '../utils/customFetch';
 import { useUserContext } from '../context/user_context';
 import { useLinksContext } from '../context/links_context';
+import { FaArrowLeft, FaShare } from 'react-icons/fa';
 
 const Preview = () => {
   const {userId} =  useParams();
@@ -40,8 +41,8 @@ const Preview = () => {
     <Wrapper>
       <div className="banner">
         <nav>
-          <Link to="/">back to edit</Link>
-          <Link to="/ ">share</Link>
+          <Link to="/"><FaArrowLeft/></Link>
+          <Link to="/ "><FaShare/></Link>
         </nav>
       </div>
       <div className="preview-card">
@@ -70,8 +71,11 @@ const Wrapper = styled.section`
       justify-content: space-between;
       align-items: center;
       border-radius: 5px;
+      
       a {
         display: block;
+        color: black;
+        font-size: 1.2rem;
       }
     }
   }

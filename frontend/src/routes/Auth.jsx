@@ -1,15 +1,18 @@
 import React from 'react'
 import styled from "styled-components";
 import { useState, useEffect } from 'react';
-import { Form, useActionData, useSearchParams, redirect } from "react-router-dom";
+import { Form, useLoaderData, useSearchParams, redirect } from "react-router-dom";
 import { useUserContext } from '../context/user_context';
 import { useNavigate } from 'react-router-dom';
+
+
 const Auth = () => {
   const [searchParams] = useSearchParams();
   const {user} = useUserContext();
-  const [isLogin, setIsLogin] = useState(searchParams.get('mode') === 'login')
-  const actionData = useActionData();
+  const [isLogin, setIsLogin] = useState(searchParams.get('mode') === 'login');
+  const loaderData = useLoaderData();
   const navigate = useNavigate();
+  
   useEffect(()=>{
     if(user) {
       navigate("/")
@@ -17,6 +20,7 @@ const Auth = () => {
       return;
     }
   }, [user])
+
   return (
     <Wrapper>
       <Form method="POST" className="form">
@@ -72,7 +76,7 @@ const Auth = () => {
         <button type="submit" className="btn submit-btn" >
           Submit
         </button>
-        <p>{actionData?.error}</p>
+        <p>{useLoaderData?.error}</p>
         <p>
           {isLogin
             ? "Don't have an Account? "
