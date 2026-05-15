@@ -52,9 +52,9 @@ const App = () => {
     {
       path: "/auth",
       element: <Auth />,
-      loader: async ()=> {
-        return authAction()
-      },
+      // loader: async ()=> {
+      //   return authAction()
+      // },
     },
   ]);
   return <RouterProvider router={router} />;
