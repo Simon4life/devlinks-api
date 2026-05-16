@@ -24,7 +24,6 @@ const App = () => {
                 const { links } = response.data;
                 return links;
               } catch (error) {
-                console.log(error)
                 localStorage.removeItem("user")
                 return redirect("/auth");
               } 
@@ -52,9 +51,7 @@ const App = () => {
     {
       path: "/auth",
       element: <Auth />,
-      // loader: async ()=> {
-      //   return authAction()
-      // },
+      action: authAction
     },
   ]);
   return <RouterProvider router={router} />;

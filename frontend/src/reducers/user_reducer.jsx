@@ -15,6 +15,9 @@ const user_reducer = (state, action) => {
   if (action.type === "UPDATE_ERROR_MSG") {
     return { ...state, errorMessage: action.payload };
   }
+  if(action.type === "SET_AUTH_ERROR") {
+    return {...state, authError: action.payload, authLoading: false}
+  }
 };
 
 export default user_reducer;

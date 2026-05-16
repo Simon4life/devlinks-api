@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Auth = () => {
   const [searchParams] = useSearchParams();
-  const {user} = useUserContext();
+  const {user, authError} = useUserContext();
   const [isLogin, setIsLogin] = useState(searchParams.get('mode') === 'login');
   const loaderData = useLoaderData();
   const navigate = useNavigate();
@@ -76,7 +76,7 @@ const Auth = () => {
         <button type="submit" className="btn submit-btn" >
           Submit
         </button>
-        <p>{useLoaderData?.error}</p>
+        <p>{authError}</p>
         <p>
           {isLogin
             ? "Don't have an Account? "

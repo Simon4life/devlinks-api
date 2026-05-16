@@ -6,6 +6,8 @@ const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || null,
   isLoading: true,
   errorMessage: null,
+  authError: null,
+  authLoading: false
 };
 
 const UserContext = React.createContext();
@@ -44,26 +46,37 @@ export const UserProvider = ({ children }) => {
    }
   }
 
+  // this handles the information from the form and decides whether to login or register the user based on the mode
   const authAction = async ({ request }) => {
+
     const formData = await request.formData();
     const mode = formData.get('mode')
+
     if (mode === 'login') {
       // login logic
-      const email = formData.get("email")
-      const password = formData.get("password")
-      return loginUser({ email, password });
+      try {
+        const email = formData.get("email")
+        const password = formData.get("password")
+        dispatch({type: "SET_AUTH_ERROR", payload: null})
+        return loginUser({ email, password });
+      } catch (error) {
+        dispatch({ type: "SET_AUTH_ERROR", payload: "Invalid email or password" });
+        return null;
+      }
+     
     } else if (mode === 'register') {
+
       const firstName = formData.get("firstName");
       const lastName = formData.get("lastName");
       const email = formData.get("email");
       const password = formData.get("password");
+
       if(!firstName || !lastName || !email || !password) {
         console.log("invalid credentials")
         return null
       } else {
         await registerUser({firstName, lastName, email, password})
-      }
-      
+      } 
     }
   }
 
