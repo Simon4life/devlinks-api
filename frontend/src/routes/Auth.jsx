@@ -73,10 +73,10 @@ const Auth = () => {
             placeholder="Enter your password"
           />
         </div>
+        {authError && <p className="form-alert">{authError}</p>}
         <button type="submit" className="btn submit-btn" >
           Submit
         </button>
-        <p>{authError}</p>
         <p>
           {isLogin
             ? "Don't have an Account? "
@@ -133,9 +133,10 @@ const Wrapper = styled.div`
   }
 
   .form-alert {
-    color: var(--red-dark);
+    color: var(--clr-red);
     letter-spacing: var(--letterSpacing);
     text-transform: capitalize;
+    margin-bottom: 0;
   }
 `;
 

@@ -54,14 +54,19 @@ export const UserProvider = ({ children }) => {
 
     if (mode === 'login') {
       // login logic
-      try {
-        const email = formData.get("email")
-        const password = formData.get("password")
-        dispatch({type: "SET_AUTH_ERROR", payload: null})
-        return loginUser({ email, password });
-      } catch (error) {
-        dispatch({ type: "SET_AUTH_ERROR", payload: "Invalid email or password" });
-        return null;
+      const email = formData.get("email")
+      const password = formData.get("password");
+      if(email !== "" && password !== "") {
+        try {
+          await loginUser({ email, password })
+          return null
+        } catch (error) {
+          console.log("hello")
+          return null;
+        }
+      } else {
+        dispatch({type: "SET_AUTH_ERROR", payload: "Please enter both email and password" });
+        return null
       }
      
     } else if (mode === 'register') {
@@ -106,8 +111,7 @@ export const UserProvider = ({ children }) => {
       })  
       return redirect("/")
    } catch (error) {
-    console.log(error)
-    return null
+      return dispatch({ type: "SET_AUTH_ERROR", payload: "Invalid email or password" });    
    }
   }
 
