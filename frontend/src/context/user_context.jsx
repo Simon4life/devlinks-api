@@ -81,6 +81,7 @@ export const UserProvider = ({ children }) => {
         return null
       } else {
         await registerUser({firstName, lastName, email, password})
+        return null;
       } 
     }
   }

@@ -34,10 +34,11 @@ const Navbar = () => {
             {screenSize > 570 ? "Profile Details" : null}
           </NavLink>
         </div>
-        <div>
+        <div className='btn-container'>
           <Link to={`/preview/${userId}`} className="preview-btn">
             {screenSize > 570 ? "Preview" : <FaEye />}
           </Link>
+          <button className='logout-btn'>logout</button>
         </div>
       </div>
     </Wrapper>
@@ -101,6 +102,23 @@ const Wrapper = styled.nav`
   .logo-img {
     display: block;
     width: 38px;
+  }
+  .btn-container {
+    display: flex;
+    align-items-center;
+    gap: 2rem;
+
+    .logout-btn {
+      border: none;
+      background: var(--clr-purple);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: .5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      letter-spacing: var(--spacing);
+    }
   }
 `;
 

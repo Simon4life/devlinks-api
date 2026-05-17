@@ -10,7 +10,6 @@ const links_reducer = (state, action) => {
   }
 
   if(action.type === "GET_LINKS") {
-    console.log(action.payload)
     if(action.payload.length < 1) {
       return {...state}
     }else {

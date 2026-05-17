@@ -135,8 +135,8 @@ const Wrapper = styled.div`
   .form-alert {
     color: var(--clr-red);
     letter-spacing: var(--letterSpacing);
-    text-transform: capitalize;
     margin-bottom: 0;
+
   }
 `;
 
