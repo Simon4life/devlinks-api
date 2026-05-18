@@ -128,13 +128,16 @@ const loginUser = async (req, res) => {
 }
 
 const logoutUser = async (req, res) => {
-  res.cookie('refreshToken', "logout", {
+  res.clearCookie("refreshToken", {
     httpOnly: true,
-    expires: new Date(Date.now()),
-    secure: process.env.NODE_ENV === 'production',
-    signed: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
   });
-  res.status(StatusCodes.OK).json({ message: "user logged out" })
+
+  return res.status(StatusCodes.ACCEPTED).json({
+    success: true,
+    message: "Logged out successfully",
+  });
 }
 
 module.exports = {
