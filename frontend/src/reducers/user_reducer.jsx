@@ -18,6 +18,9 @@ const user_reducer = (state, action) => {
   if(action.type === "SET_AUTH_ERROR") {
     return {...state, authError: action.payload, authLoading: false}
   }
+  if(action.type === "LOGOUT_USER") {
+    return {...state, user: null}
+  }
 };
 
 export default user_reducer;

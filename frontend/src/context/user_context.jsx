@@ -116,8 +116,21 @@ export const UserProvider = ({ children }) => {
    }
   }
 
+  const logoutUser = async () => {
+    try {
+      await axios.post("http://localhost:5000/api/v1/auth/logout", {}, {withCredentials: true}).then((response) => {
+        if (response.status === 202) {
+          dispatch({ type: "LOGOUT_USER" });
+          localStorage.removeItem("user");
+        }
+      })
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
-    <UserContext.Provider value={{ ...state, fetchUser, registerUser, authAction, loginUser, updateUserProfile }}>
+    <UserContext.Provider value={{ ...state, fetchUser, registerUser, authAction, loginUser, updateUserProfile, logoutUser }}>
       {children}
     </UserContext.Provider>
   );

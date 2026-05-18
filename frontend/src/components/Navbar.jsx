@@ -7,7 +7,7 @@ import { FaLink, FaUser, FaEye } from "react-icons/fa";
 import { useUserContext } from "../context/user_context"
 
 const Navbar = () => {
-  const { user } = useUserContext();
+  const { user, logoutUser } = useUserContext();
   const {userId} = user
   const [screenSize, setScreenSize] = useState(window.innerWidth);
   useEffect(() => {
@@ -38,7 +38,7 @@ const Navbar = () => {
           <Link to={`/preview/${userId}`} className="preview-btn">
             {screenSize > 570 ? "Preview" : <FaEye />}
           </Link>
-          <button className='logout-btn'>logout</button>
+          <button className='logout-btn' onClick={() => logoutUser()}>logout</button>
         </div>
       </div>
     </Wrapper>
