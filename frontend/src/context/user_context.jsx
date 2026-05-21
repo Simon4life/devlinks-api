@@ -34,7 +34,7 @@ export const UserProvider = ({ children }) => {
   const registerUser = async (userInfo) => {
 
    try {
-      await axios.post("http://localhost:5000/api/v1/auth/register", userInfo, {withCredentials: true}).then((response) => {
+      await axios.post("/api/v1/auth/register", userInfo, {withCredentials: true}).then((response) => {
         const {user, accessToken} = response.data;
         dispatch({ type: "REGISTER_USER", payload: user });
         localStorage.setItem("user", JSON.stringify({...user, accessToken}));
