@@ -124,7 +124,7 @@ export const UserProvider = ({ children }) => {
           localStorage.removeItem("user");
         }
       })
-      
+
     } catch (error) {
       console.log(error)
     }
