@@ -105,7 +105,7 @@ export const UserProvider = ({ children }) => {
 
   const loginUser = async (userInfo) => {
     try {
-      await axios.post("http://localhost:5000/api/v1/auth/login", userInfo, {withCredentials: true}).then((response) => {
+      await axios.post("https://devlinks-api-1g68.onrender.com/api/v1/auth/login", userInfo, {withCredentials: true}).then((response) => {
         const {user, accessToken} = response.data;
         dispatch({ type: "LOGIN_USER", payload: user });
         localStorage.setItem("user", JSON.stringify({...user, accessToken}));

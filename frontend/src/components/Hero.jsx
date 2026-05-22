@@ -13,8 +13,7 @@ const Hero = () => {
         </h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          <br />
-          Eligendi officiis non quo repudiandae atque voluptatem necessitatibus.
+          
         </p>
         <Link className="btn">Get started <FaArrowRightLong className='arrow-right'/></Link>
       </div>
@@ -30,6 +29,7 @@ const Wrapper = styled.section`
   min-height: calc(100vh - 8rem);
   // color: var(--clr-white);
   display: flex;
+  background: #fcfcfc;
   align-items: center;
   margin: 0 auto;
   padding: 0 2rem;
@@ -37,6 +37,7 @@ const Wrapper = styled.section`
     display: none;
   }
   @media screen and (min-width: 789px) {
+    background: white;
     justify-content: center;
     .img-container {
       display: block;

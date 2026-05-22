@@ -8,9 +8,9 @@ const Features = () => {
   return (
     <Wrapper className="feature-section">
       <h2>
-        Our <span>all feature</span> for your content
+        Our Core Ideas
       </h2>
-      <p>share multiple links into one link.</p>
+      <p>share multiple link social links into one simple link for your audience.</p>
       <div className="features">
         <div className="feature">
           <span className='span-1'>

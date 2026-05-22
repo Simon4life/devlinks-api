@@ -24,7 +24,7 @@ const LandingNav = () => {
       
         <div className='auth-container'>
             <Link className="btn" to="/auth">
-              Login/Register
+              Login
             </Link>
         </div>
 
@@ -55,6 +55,9 @@ const LandingNav = () => {
 
 const Wrapper = styled.nav`
   background: var(--clr-white);
+  position: static;
+  width: 100%;
+  padding: 0 1rem;
   .nav-center {
   display: flex;
   align-items: center;

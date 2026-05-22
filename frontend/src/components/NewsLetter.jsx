@@ -1,27 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-
+import Screenshot from "../assets/Screenshot.png"
 const developers = [
   {
     title: "Creative Designer",
     description: "UI/UX Portfolio & Case Studies",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCU5gVFMaJ0cHzt13AtqQpwt46gb2JJZZBxXZXoP7MGfWQBrS8sisocTl_3sXbjQIn7jrKS1COKu002CC8nCk2QEOFRKZhRWMTufQKwBHCgbBQy0-m_fmFqIA5U_OLszdPhSoDqJHsd4wZq5wjKclTqb5P2oYnobmHzYzzD_Y5alCQSwml_RN7BZ1WQVSWko8fOj_Ru0m18_Mo2kBtz-H_0174vFuL1VaOA8tsFqmPLl_ne1wBCYw7zTm1mhCWWNoyrd10CxHPG9zU",
-    buttons: ["Latest Case Study", "My Design Toolkit"],
+    image: Screenshot,
+    links: ["LinkedIn", "Behance"],
   },
   {
     title: "Fitness Coach",
     description: "Workout plans and nutrition tips",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBXOJNTXJ5b4Tj__NNrZRmKALs6Jof7MznLm6Jopz4H6n6HFH-neV4AQm772b0Y0TvNq1VYpeHaDH49ZABcC1-au9j3wsXRUrGDbztTWS0P7o5mdwGOzCZ7BiayBumPIcTSTlAShiXKh5QGF8s5W7xeUnbvVzoNJweUmLbmYB9tJ8oDeEgraHLDc7rxc8flYG9FYAUs1YL21NTSya3jIHN-7vrsrO_kId9hkRiZZJFxnKAetDmk1W9rqrvkDwD_EONCXf-huEUhtzM",
-    buttons: ["7-Day Free Trial", "Healthy Recipes PDF"],
+    image: Screenshot,
+    links: ["Instagram", "Rumble"],
   },
   {
     title: "Tech Explorer",
     description: "Latest tech reviews and gadgets",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBsna7IouS1PYJBOqOjly1dixOLI67_5vkOsAhpn0skkwNPJ_htoHfZ6o9OHlElAdjeZnw8Tx-g16r_iJPSR0V3YJir0Lr_OEKntujNG_1lj565hk6ruX9VgwzH1kzHdJA3NDn7ycHYZLLZiUCescAwYkZd-gVFEVRVN0QxGj6jRRObgxyCewwSaXLqYhyWGBja6U_RGTPZlJOU_etKOMwiwFO2adjQRO2NlcSLPZtF8l3QFSeSPjoZPiMnUmMSowElsxlGZ5pUZ74",
-    buttons: ["Best Laptops 2024", "Join My Newsletter"],
+    image: Screenshot,
+    links: ["Instagram", "Youtube"],
   },
 ];
 
@@ -30,7 +27,7 @@ export default function CreatorSection() {
     <Section>
       <Container>
         <Header>
-          <Title>Designed for every Developer</Title>
+          <Title>Designed for every Creator</Title>
           <Subtitle>
             See how developers around the world are using devlinks to grow
             their audience and simplify their digital presence.
@@ -49,7 +46,7 @@ export default function CreatorSection() {
                 <Description>{developer.description}</Description>
 
                 <ButtonContainer>
-                  {developer.buttons.map((btn, i) => (
+                  {developer.links.map((btn, i) => (
                     <FakeButton key={i}>{btn}</FakeButton>
                   ))}
                 </ButtonContainer>
@@ -86,7 +83,7 @@ const Header = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 800;
   color: #0f172a;
 
@@ -197,13 +194,13 @@ const Description = styled.p`
 
 const ButtonContainer = styled.div`
   width: 100%;
-  margin-top: 16px;
+  margin-top: 6px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 `;
 
-const FakeButton = styled.div`
+const FakeButton = styled.a`
   width: 100%;
   padding: 10px;
   background: white;
