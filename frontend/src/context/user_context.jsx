@@ -29,12 +29,12 @@ export const UserProvider = ({ children }) => {
         dispatch({ type: "TOGGLE_LOADING" });
       }
 
-    }
+  }
 
   const registerUser = async (userInfo) => {
 
    try {
-      await axios.post("/api/v1/auth/register", userInfo, {withCredentials: true}).then((response) => {
+      await axios.post("https://devlinks-api-1g68.onrender.com/api/v1/auth/register", userInfo, {withCredentials: true}).then((response) => {
         const {user, accessToken} = response.data;
         dispatch({ type: "REGISTER_USER", payload: user });
         localStorage.setItem("user", JSON.stringify({...user, accessToken}));
@@ -118,7 +118,7 @@ export const UserProvider = ({ children }) => {
 
   const logoutUser = async () => {
     try {
-      await axios.post("http://localhost:5000/api/v1/auth/logout", {}, {withCredentials: true}).then((response) => {
+      await axios.post("https://devlinks-api-1g68.onrender.com/api/v1/auth/logout", {}, {withCredentials: true}).then((response) => {
         if (response.status === 202) {
           dispatch({ type: "LOGOUT_USER" });
           localStorage.removeItem("user");

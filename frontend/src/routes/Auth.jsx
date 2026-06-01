@@ -4,11 +4,11 @@ import { useState, useEffect } from 'react';
 import { Form, useLoaderData, useSearchParams, redirect } from "react-router-dom";
 import { useUserContext } from '../context/user_context';
 import { useNavigate } from 'react-router-dom';
-
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const Auth = () => {
   const [searchParams] = useSearchParams();
-  const {user, authError} = useUserContext();
+  const {user, authError, isLoading} = useUserContext();
   const [isLogin, setIsLogin] = useState(searchParams.get('mode') === 'login');
   const loaderData = useLoaderData();
   const navigate = useNavigate();
@@ -75,7 +75,7 @@ const Auth = () => {
         </div>
         {authError && <p className="form-alert">{authError}</p>}
         <button type="submit" className="btn submit-btn" >
-          Submit
+          {isLoading ? <LoadingSpinner/> : "Submit"}
         </button>
         <p>
           {isLogin
@@ -120,6 +120,9 @@ const Wrapper = styled.div`
       display: block;
       width: 100%;
       margin: .6rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .form-btn {
       background: transparent;
@@ -129,6 +132,7 @@ const Wrapper = styled.div`
       cursor: pointer;
       display: inline-block;
       margin-left: 0.2rem;
+      
     }
   }
 
