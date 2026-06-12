@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
   "resolution": {
     "@babel/plugin-transform-react-jsx":"^7.14.9",
