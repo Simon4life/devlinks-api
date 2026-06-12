@@ -23,7 +23,7 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
-app.use(cors({credentials: true, origin: ["https://.netlify.app", ""],}));
+app.use(cors({credentials: true, origin: ["https://dev-linkapp.netlify.app"],}));
 app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
 app.use(fileUpload({ useTempFiles: true }));
