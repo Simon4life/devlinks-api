@@ -15,13 +15,6 @@ const notFoundMiddleware = require("./middleware/not-found");
 
 const fileUpload = require('express-fileupload');
 
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
-
-app.get("*", (req, res) => {
-  res.sendFile(
-    path.join(__dirname, "../frontend/dist/index.html")
-  );
-});
 
 const cloudinary = require('cloudinary').v2;
 cloudinary.config({
@@ -30,7 +23,7 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
-app.use(cors({credentials: true, origin: ["http://localhost:5173", ""],}));
+app.use(cors({credentials: true, origin: ["https://.netlify.app", ""],}));
 app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
 app.use(fileUpload({ useTempFiles: true }));
